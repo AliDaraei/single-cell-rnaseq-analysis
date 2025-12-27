@@ -38,27 +38,20 @@ Raw sequencing data are **not included**.
 
 ## 📁 Repository structure
 
-single-cell-rnaseq-analysis/
+snRNAseq-workflows/
+├── data/
+│   └── example_metadata/        # Example metadata tables (no raw sequencing data)
 ├── scripts/
-│ ├── 01_qc_snRNAseq.R
-│ ├── 02_doublet_filtering_snRNAseq.R
-│ ├── 03_normalization_snRNAseq.R
-│ ├── 04_integration_harmony_snRNAseq.R
-│ ├── 05_clustering_umap_snRNAseq.R
-│ ├── 06_annotation_snRNAseq.R
-│ ├── 07_hepatocyte_subclustering_snRNAseq.R
-│ ├── 08_hepatocyte_subcluster_annotation_snRNAseq.R
-│ ├── 09_pseudobulk_DE_snRNAseq.R
-│ ├── 10_celltype_composition_snRNAseq.R
-│ ├── 11_pathway_enrichment_snRNAseq.R
-│ ├── 12_celltype_specific_pseudobulk_DE_snRNAseq.R
-│ ├── 13_umap_plots_snRNAseq.R
-│ └── 14_scVI_latent_space_snRNAseq.py
-├── results/ # Generated result objects and tables (not tracked)
-├── figures/ # Generated figures (PNG / PDF, not tracked)
-├── envs/ # Environment documentation
-├── README.md
-└── METHODS.md
+│   ├── 01_qc/                   # QC and filtering
+│   ├── 02_normalization/        # Normalization and scaling
+│   ├── 03_integration/          # Dataset integration (Harmony, Seurat)
+│   ├── 04_clustering/           # Dimensionality reduction and clustering
+│   ├── 05_annotation/           # Cell type annotation and subclustering
+│   └── 06_downstream/           # DE, pathway analysis, ML, visualization
+├── envs/                        # Conda / R environment specifications
+├── figures/                     # Generated figures (PNG/PDF)
+├── results/                     # Result tables and summaries
+└── README.md
 
 ---
 
