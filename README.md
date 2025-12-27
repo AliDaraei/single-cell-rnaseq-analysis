@@ -34,7 +34,6 @@ This repository covers the full snRNA-seq analysis lifecycle:
 Raw sequencing data are **not included**.
 
 ---
-
 ## 📁 Repository structure
 
 single-cell-rnaseq-analysis/
@@ -58,8 +57,6 @@ single-cell-rnaseq-analysis/
 ├── README.md
 └── METHODS.md
 
-yaml
-Copy code
 
 ---
 
