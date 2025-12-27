@@ -4,16 +4,15 @@ This repository contains a modular, research-grade workflow for analyzing
 single-nucleus RNA-sequencing (snRNA-seq) data.
 
 The pipeline reflects real analytical practices used in biological research
-and is designed to prioritize:
+and prioritizes:
 
 - biological interpretability  
 - statistical rigor  
 - reproducibility  
 - clean, readable code  
 
-The workflows are written as sequential scripts rather than a single
-monolithic package, making each analytical decision transparent and easy
-to adapt to new datasets.
+The workflows are implemented as sequential scripts rather than a monolithic
+package, keeping the analytical logic transparent and adaptable.
 
 ---
 
@@ -38,20 +37,29 @@ Raw sequencing data are **not included**.
 
 ## 📁 Repository structure
 
-snRNAseq-workflows/
-├── data/
-│   └── example_metadata/        # Example metadata tables (no raw sequencing data)
+<pre>
+single-cell-rnaseq-analysis/
 ├── scripts/
-│   ├── 01_qc/                   # QC and filtering
-│   ├── 02_normalization/        # Normalization and scaling
-│   ├── 03_integration/          # Dataset integration (Harmony, Seurat)
-│   ├── 04_clustering/           # Dimensionality reduction and clustering
-│   ├── 05_annotation/           # Cell type annotation and subclustering
-│   └── 06_downstream/           # DE, pathway analysis, ML, visualization
-├── envs/                        # Conda / R environment specifications
-├── figures/                     # Generated figures (PNG/PDF)
-├── results/                     # Result tables and summaries
-└── README.md
+│   ├── 01_qc_snRNAseq.R
+│   ├── 02_doublet_filtering_snRNAseq.R
+│   ├── 03_normalization_snRNAseq.R
+│   ├── 04_integration_harmony_snRNAseq.R
+│   ├── 05_clustering_umap_snRNAseq.R
+│   ├── 06_annotation_snRNAseq.R
+│   ├── 07_hepatocyte_subclustering_snRNAseq.R
+│   ├── 08_hepatocyte_subcluster_annotation_snRNAseq.R
+│   ├── 09_pseudobulk_DE_snRNAseq.R
+│   ├── 10_celltype_composition_snRNAseq.R
+│   ├── 11_pathway_enrichment_snRNAseq.R
+│   ├── 12_celltype_specific_pseudobulk_DE_snRNAseq.R
+│   ├── 13_umap_plots_snRNAseq.R
+│   └── 14_scVI_latent_space_snRNAseq.py
+├── results/        # Generated result objects and tables (not tracked)
+├── figures/        # Generated figures (PNG / PDF, not tracked)
+├── envs/           # Environment documentation
+├── README.md
+└── METHODS.md
+</pre>
 
 ---
 
@@ -72,20 +80,18 @@ Quality control
 
 ## 🧬 Analysis philosophy
 
-### Why pseudobulk?
-Differential expression is performed using pseudobulk aggregation to respect
-biological replication and avoid statistical pitfalls associated with
-single-cell–level testing.
+**Why pseudobulk?**  
+Pseudobulk aggregation respects biological replication and avoids statistical
+pitfalls of single-cell–level testing.
 
-### Why cell-type–specific subclustering?
+**Why cell-type–specific subclustering?**  
 Global clustering can mask biologically meaningful heterogeneity, especially
-within abundant populations such as hepatocytes. Subclustering enables
-resolution of zonation, stress responses, and disease-associated programs.
+within abundant populations such as hepatocytes.
 
-### Why scVI?
-scVI is included as an **optional exploratory module** to validate
-transcriptional structure in a probabilistic latent space. It is not used
-for annotation or differential expression.
+**Why scVI?**  
+scVI is included as an optional exploratory module to validate transcriptional
+structure in a probabilistic latent space. It is not used for annotation or
+differential expression.
 
 ---
 
@@ -107,27 +113,22 @@ for annotation or differential expression.
 - anndata  
 - PyTorch backend  
 
-Exact versions may vary by system and dataset.
-
 ---
 
 ## ♻️ Reproducibility notes
 
 - Scripts are designed to be run sequentially  
-- Parameters (QC thresholds, clustering resolution) are dataset-specific  
-- Manual biological interpretation is required for annotation steps  
-- Intermediate objects are saved to support inspection and reuse  
+- Parameters are dataset-specific  
+- Manual biological interpretation is required  
+- Intermediate objects are saved for inspection  
 
 ---
 
 ## 🎯 Intended audience
 
-This repository is intended for:
-
 - computational biologists  
 - bioinformaticians  
 - researchers working with scRNA-seq or snRNA-seq  
-- scientists interested in reproducible single-cell workflows  
 
 ---
 
