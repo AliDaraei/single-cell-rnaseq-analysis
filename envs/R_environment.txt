@@ -1,0 +1,18 @@
+R >= 4.2
+
+Core packages:
+- Seurat
+- harmony
+- edgeR
+- dplyr
+- ggplot2
+- clusterProfiler
+- msigdbr
+- enrichplot
+- ComplexHeatmap
+- circlize
+
+Notes:
+- Exact package versions may vary by system
+- Scripts were developed and tested on R >= 4.2
+- Bioconductor packages installed via BiocManager
